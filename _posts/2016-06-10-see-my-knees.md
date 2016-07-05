@@ -2,8 +2,9 @@
 layout: post
 title: "膝盖受伤看中医"
 date: 2016-06-10
-tags: [life, knee , traditional  ]
+tags: [life, knee , traditional]
 ---
+
 
 还以为人生在于作死，其实是不作死就不会死
 ===
