@@ -13,6 +13,7 @@ opennebula安装
 ### 0x01 配置yum源
 
 前端控制接节点和后端计算节点，皆配置如下源
+
 ```shell
 yum install -y epel-release
 cat /etc/yum.repos.d/opennebula.repo
@@ -26,11 +27,13 @@ gpgcheck=0
 ### 0x02 安装控制端
 
 #### 安装核心服务以及管理UI
+
 ```shell
 yum install opennebula-server opennebula-sunstone -y
 ```
 
 #### 安装ruby等依赖
+
 ```shell
 /usr/share/one/install_gems 
 ```
@@ -69,6 +72,15 @@ TM_MAD对应项改成ssh，BASE_PATH对应项改成自己定义路径，记得�
 web登陆账号密码在/var/lib/one/.one/one_auth
 直接编辑似乎会出问题
 http://serverfault.com/questions/545108/opennebula-sunston-user-oneadmin-password
+
+#### 修改默认KVM启动参数
+
+默认配置文件在`/etc/one/vmm_exec/vmm_exec_kvm.conf`,
+可以根据需求修改相应的kvm参数。这里把
+
+`NIC     = [ filter = "clean-traffic", model="virtio"  ]`
+
+注释取消，使用virtio网卡驱动以提升性能。有一点值得注意的是virtio驱动的网卡，在linux系统里面使用`ethtool eth0`只能看到Link detected: yes，没有多余的带宽等信息。
 
 
 ### 0x03 安装kvm计算节点

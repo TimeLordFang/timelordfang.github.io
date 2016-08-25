@@ -110,3 +110,7 @@ nameserver 192.168.3.1
 nameserver 192.168.1.1
 ```
 
+
+### slave不同步forward的域问题(20160825)
+
+Master-Server的域配置如果type为forward的话，不能被Slave-Server同步，只有type为master的才行。
